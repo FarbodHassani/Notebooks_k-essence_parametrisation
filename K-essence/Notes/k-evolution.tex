@@ -1,0 +1,206 @@
+
+
+\documentclass[a4paper,10pt]{article}
+\pdfoutput=1
+\usepackage{jcappub}
+\usepackage{bbold}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{eufrak}
+\usepackage{etoolbox}
+\usepackage{amsmath}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+\usepackage{float}              % Activate [H] option to place figure HERE
+\usepackage{listings}
+
+\newtcbox{\mymath}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=yellow!30!black,
+    colback=yellow!30, boxrule=1pt,
+    #1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\bean{\begin{eqnarray*}}
+\def\eean{\end{eqnarray*}}
+\def\cd{\cdot}
+\def\vp{\varphi}
+\def\l {\langle}
+\def\re {\rangle}
+\def \dd {\partial}
+\def \ra {\rightarrow}
+\def \la {\lambda}
+\def \La {\Lambda}
+\def \De {\Delta}
+\def \DH {\Delta_{\rm HI}}
+\newcommand{\de}{\delta}
+\def \b {\beta}
+\def \al {\alpha}
+\def \ka {\kappa}
+\def \Ga {\Gamma}
+\def \ga {\gamma}
+\def \si {\sigma}
+\def \Si {\Sigma}
+\def \ep {\epsilon}
+\def \om {\omega}
+\def \Om {\Omega}
+\def \lap {\triangle}
+\def \ep {\epsilon}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Special definitions for this paper
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\MyRed}{\color [rgb]{0.8,0,0}}
+\newcommand{\MyGreen}{\color [rgb]{0,0.7,0}}
+\newcommand{\MyBlue}{\color [rgb]{0,0,0.8}}
+\newcommand{\MyBrown}{\color [rgb]{0.8,0.4,0.1}}
+\newcommand{\MyPurple}{\color [rgb]{0.6,0.0,0.6}}
+\def\GV#1{{\MyRed [GV: #1]}}
+\def\RD#1{{\MyGreen [RD:  {\tt #1}]}} 
+\def\RDt#1{{\MyGreen #1}}   
+\def\GM#1{{\MyBlue [GM: #1]}}  
+\def\GF#1{{\MyPurple [GF: #1]}}    
+
+
+
+\newcommand{\ie}{\emph{i. e.}}
+\newcommand{\cf}{\emph{cf.}}
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\eg}{\emph{e. g.}}
+
+\newcommand{\Scal}{\mathcal S}
+\newcommand{\DD}{\mathcal D}
+\newcommand{\EE}{\mathcal E}
+\newcommand{\MM}{\mathcal M}
+\newcommand{\HH}{\mathcal H}
+
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\bn}{\boldsymbol{n}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bnabla}{\boldsymbol{\nabla}}
+\newcommand{\bell}{\boldsymbol{\ell}}
+\newcommand{\bal}{\boldsymbol{\alpha}}
+
+
+%Farbod commands
+\newcommand{\Ge}{G_{\text{eff}}}
+\newcommand{\MP}{M_{\text{pl}}}
+\newcommand{\PP}{\mathcal{P}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\title{... }
+
+\author[a]{.}
+\author[b]{, .}
+\author[c]{, .}
+\author[d]{,.}
+\author[e]{,.}
+
+%\affiliation[a]{
+%Universit\'e de Gen\`eve, D\'epartement de Physique Th\'eorique and CAP,
+%24 quai Ernest-Ansermet, CH-1211 Gen\`eve 4, Switzerland
+%}
+
+%\emailAdd{farbod.hassani@unige.ch}
+%\emailAdd{martin.kunz@unige.ch}
+\emailAdd{..}
+\emailAdd{..}
+
+\abstract{
+}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%
+%%%INTRODUCTION
+%%%%%%%%%%%%%%%%%
+\section{Relativistic Poisson equation}
+The conformal Newtonian gauge (also known as the longitudinal gauge) reads \url{https://arxiv.org/abs/astro-ph/9506072}-
+\be
+ds^2 = a^2 (\tau) \Big[-(1+2 \Psi) d\tau^2 +  (1-2 \Phi)dx_i dx^i  \Big]
+\ee
+The (0,0) component of  first order perturbed Einstein equation gives,
+\be
+k^2 \Phi + 3 \mathcal{H} \Big(\Phi' +  \HH \Psi\Big) =-4 \pi G a^2 \bar{\rho} \, \delta
+\ee
+The last equation is called relativistic Poisson equation which for small scales ($k \gg \HH$) and using the fact that $\Phi'$ is very suppressed in general we can retrieve the Newtonian Poisson equation, which reads as,
+\be
+k^2 \Phi = -4 \pi G a^2 \bar{\rho} \, \delta
+\ee
+ \subsection{Newtonian Poisson equation  in the k-evolution}
+ Here we are going to compare $\PP_{\delta}$ from Poisson equation to the output one to see how much Newtonian Poisson equation is valid. We also can compute $k^2 \Phi  + 4 \pi G a^2 \bar{\rho} \delta$ but we need to take care of the signs. To obtain $\Phi$, $\delta$ and etc. we use the following relations 
+ \be
+ \PP _{\Psi} = \Psi_k ^2 \, , \;  \PP _{\delta} = \delta_k ^2
+ \ee
+ and also $\rho_m=\rho_m(0) /a^3$ and $4 \pi G \rho_{cr} =(3/2) {H_0}^2 $, so we have  $4 \pi G  \rho_m a^2 = 4 \pi G  \frac{\rho_m (a)}{\rho_{cr} (0)} \rho_{cr} (0) a^2 = 4 \pi G  \frac{\Omega_m (0) a^{-3} \rho_{cr}}{\rho_{cr} (0)} \rho_{cr} (0) a^2= (3/2) {H_0}^2   {\Omega_m (0) a^{-3} }  a^2 = ( 3/2) \mathcal{H}_0^2 \Omega_m (0) /a $
+\\ Assuming that only matter clusters, which is not completely true in the case of k-essence we have,
+\be
+4 \pi G a^2 \bar{\rho} \delta  = ( 3/2) \mathcal{H}_0^2 \frac{\Omega_m (0) }{a} \sqrt{\PP_{\delta}}
+\ee
+We are going to compute $|\frac{k^2 \sqrt{\PP_{\Phi}}  - ( 3/2) \mathcal{H}_0^2 \frac{\Omega_m (0) }{a} \sqrt{\PP_{\delta}}} {k^2 \sqrt{\PP_{\Phi}}}|$ to test the Newtonian Poisson equation,
+        \begin{figure}[H]
+ \includegraphics[scale=0.55]{./Plot_Newt_001} 
+ \end{figure}
+ \subsection{Relativistic Poisson equation}
+Now we want to check if we can reduce the error of Newtonian Poisson equation by considering relativistic terms as following. 
+\be
+\Big| \; \frac{k^2 \Phi + 3 \mathcal{H} \Big(\cancelto{0}{\Phi'} +  \HH \Psi\Big)    - ( 3/2) \mathcal{H}_0^2 {\Omega_m (0) } \sqrt{\PP_{\delta}} (1+z)    }{k^2 \Phi}  \;\Big| \approx 0
+\ee
+We neglect $\Phi'$ because it is almost suppressed. We get the following plot,
+We expect to get "0" in the Gevolution by computing the last expression. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \begin{figure}[H]
+ \includegraphics[scale=0.55]{./Plot_rel_001} 
+ \end{figure}
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+\setcounter{equation}{0}
+%%%%%%%%%%%%%%%%%%%%%
+
+ 
+\section*{Acknowledgements}
+
+We acknowledge financial support from the Swiss National Science Foundation.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%
+\bibliographystyle{JHEP}
+%\bibliography{biblio}
+\bibliography{EFTDE}
+
+\end{document}
+
+\begin{thebibliography}{999}
+\newcommand{\bb}{\bibitem}
+
+ \end{thebibliography}
+
+
+\end{document}
+
+

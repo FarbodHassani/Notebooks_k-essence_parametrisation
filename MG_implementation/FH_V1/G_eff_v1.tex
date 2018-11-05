@@ -1,0 +1,207 @@
+
+
+\documentclass[a4paper,10pt]{article}
+\pdfoutput=1
+\usepackage{jcappub}
+\usepackage{bbold}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{eufrak}
+\usepackage{etoolbox}
+\usepackage{amsmath}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage[most]{tcolorbox}
+\usepackage{float}              % Activate [H] option to place figure HERE
+
+\newtcbox{\mymath}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=yellow!30!black,
+    colback=yellow!30, boxrule=1pt,
+    #1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\bean{\begin{eqnarray*}}
+\def\eean{\end{eqnarray*}}
+\def\cd{\cdot}
+\def\vp{\varphi}
+\def\l {\langle}
+\def\re {\rangle}
+\def \dd {\partial}
+\def \ra {\rightarrow}
+\def \la {\lambda}
+\def \La {\Lambda}
+\def \De {\Delta}
+\def \DH {\Delta_{\rm HI}}
+\newcommand{\de}{\delta}
+\def \b {\beta}
+\def \al {\alpha}
+\def \ka {\kappa}
+\def \Ga {\Gamma}
+\def \ga {\gamma}
+\def \si {\sigma}
+\def \Si {\Sigma}
+\def \ep {\epsilon}
+\def \om {\omega}
+\def \Om {\Omega}
+\def \lap {\triangle}
+\def \ep {\epsilon}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Special definitions for this paper
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\MyRed}{\color [rgb]{0.8,0,0}}
+\newcommand{\MyGreen}{\color [rgb]{0,0.7,0}}
+\newcommand{\MyBlue}{\color [rgb]{0,0,0.8}}
+\newcommand{\MyBrown}{\color [rgb]{0.8,0.4,0.1}}
+\newcommand{\MyPurple}{\color [rgb]{0.6,0.0,0.6}}
+\def\GV#1{{\MyRed [GV: #1]}}
+\def\RD#1{{\MyGreen [RD:  {\tt #1}]}} 
+\def\RDt#1{{\MyGreen #1}}   
+\def\GM#1{{\MyBlue [GM: #1]}}  
+\def\GF#1{{\MyPurple [GF: #1]}}    
+
+
+
+\newcommand{\ie}{\emph{i. e.}}
+\newcommand{\cf}{\emph{cf.}}
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\eg}{\emph{e. g.}}
+
+\newcommand{\Scal}{\mathcal S}
+\newcommand{\DD}{\mathcal D}
+\newcommand{\EE}{\mathcal E}
+\newcommand{\MM}{\mathcal M}
+\newcommand{\HH}{\mathcal H}
+
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\bn}{\boldsymbol{n}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bnabla}{\boldsymbol{\nabla}}
+\newcommand{\bell}{\boldsymbol{\ell}}
+\newcommand{\bal}{\boldsymbol{\alpha}}
+
+
+%Farbod commands
+\newcommand{\Ge}{G_{\text{eff}}}
+\newcommand{\MP}{M_{\text{pl}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\title{... }
+
+\author[a]{.}
+\author[b]{, .}
+\author[c]{, .}
+\author[d]{,.}
+\author[e]{,.}
+
+%\affiliation[a]{
+%Universit\'e de Gen\`eve, D\'epartement de Physique Th\'eorique and CAP,
+%24 quai Ernest-Ansermet, CH-1211 Gen\`eve 4, Switzerland
+%}
+
+%\emailAdd{farbod.hassani@unige.ch}
+%\emailAdd{martin.kunz@unige.ch}
+\emailAdd{..}
+\emailAdd{..}
+
+\abstract{
+In order to verify GR with the upcoming surveys we need to compare the cosmological quantities inferred by General Relativity (GR) assumptions  with the ones with non-GR  assumptions. In other words we need to compute the cosmological quantities (like $f \sigma_8$ ) consistently in each theory of gravity, including the specific background and perturbations. On the other hand, the effect of different dark energy models on linear and non-linear scales is still unknown and is not studied consistently. We are going to modify the relativistic N-body code "Gevolution" to implement the general effect of modified gravity models on scalar perturbations. To parametrize the possible deviations from GR, we use two parameters $\mu(k,z)$ and $\gamma(k,z)$ and we will discuss about the validity of GR by probing the parametric space of $\gamma$ and $\mu$...
+}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%
+%%%INTRODUCTION
+%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\section{Idea}
+We start from the FRW metric in Poisson gauge,
+\be
+ds^2 = a^2(\eta) \left[  - e^{2 \Psi} d\eta^2-2 B_i dx^i dt + ( e^{-2 \Phi} \delta_{ij} + h_{ij} ) dx^i dx^j \right] 
+\ee
+For the GR gravity the Einstein's equations including short wave correction reads,
+\be
+(1+4 \Phi) \nabla^2 \Phi  -3 \mathcal{H} \Phi' -3 \mathcal{H} ^2 \Psi +\frac 3 2 \delta^{ij} \Phi_{,i} \Phi_{,j} = -4 \pi G a^2 \Big( T_0^0 - \bar{T} ^0_0 \Big) \label{T00}
+\ee
+\begin{align}
+\Big( \delta^i_k \delta^j_l - \frac 1 3 \delta^{ij} \delta _{kl}  \Big) \Big[  \frac 1 2 h''_{ij} + \mathcal{H} h'_{ij} - \frac 1 2 \nabla^2 h_{ij} & + B'_{(ij)} + 2\mathcal H B_{(i,j)} + (\Phi-\Psi)_{,ij} -2 (\Phi- \Psi) \Phi_{,ij} + 2 \Phi_{,i} \Phi_{,j} + 4 \Phi \Phi_{,ij}   \Big]   \nonumber \\ &
+ = 8 \pi G a^2 \Big(\delta_{ik} T^i_l -\frac13 \delta_{kl}  T_i^i \Big)  
+\end{align}
+%We basically can have fully non-linear structures while the metric perturbations remain small. The order of quantities which are consistent with our perturbative expansion is shown in the following table from Adamek .et.al $\text{arxiv}.1604.06065$
+%   \begin{figure}[H]
+%   \centering
+% \includegraphics[scale=0.6]{Table} 
+% \end{figure}
+ To parametrize the effect of modified gravity theories we modify the equation \ref{T00} in Fourier space by $G \to \Ge =  \mu(k,z) G$, which modifies the Poisson equation. Moreover,
+ \be
+ \frac{\Phi}{\Psi } = \gamma (k,z)
+  \ee
+ Like what is done in \url{https://arxiv.org/pdf/1106.4543.pdf} or \url{http://aliojjati.github.io/MGCAMB/mgcamb.html}.\\
+We are going to do N-body simulation for some interesting functional form of $\Ge$ and $\gamma$ and statistically compare the observables in $\Lambda$CDM and modified gravity theory models.\\
+Questions: \\
+\begin{itemize}
+ \item why we are going to implement it in an N-body code?\\
+ Since non-linearities are important  and probably  change the results.
+  \item why in Gevolution?\\
+  Since Newtonian N-body codes do not let us modify gravity by definition, so we need a relativistic code to be consistent. 
+ \item why $\Ge$ and $\gamma$ parametrization?\\
+- we don't know yet about the paramterziation, but I'm (FH) going to discuss with Lucas Lombriser arXiv:1608.00522v1 he is in our group and specialist in this field.
+\end{itemize}
+
+\section{$G_{\text{eff}}$ implementation in gevolution}
+For the moment we take $\gamma(k,z)=1$ and implement  $G_{}$
+\setcounter{equation}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+\setcounter{equation}{0}
+%%%%%%%%%%%%%%%%%%%%%
+
+ 
+\section*{Acknowledgements}
+
+We acknowledge financial support from the Swiss National Science Foundation.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%
+\bibliographystyle{JHEP}
+%\bibliography{biblio}
+\bibliography{EFTDE}
+
+\end{document}
+
+\begin{thebibliography}{999}
+\newcommand{\bb}{\bibitem}
+
+ \end{thebibliography}
+
+
+\end{document}
+
+
