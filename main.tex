@@ -1,0 +1,860 @@
+\documentclass[a4paper,10pt]{article}
+\pdfoutput=1
+\usepackage{jcappub}
+\usepackage{bbold}
+\usepackage{aas_macros}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amssymb} 
+% \usepackage{eufrak}
+\usepackage{etoolbox}
+\usepackage{amsmath}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{subfig}
+\usepackage[most]{tcolorbox}
+\usepackage{float}              % Activate [H] option to place figure HERE
+\usepackage{listings}
+%%%%%%%%%%%
+
+% benjamin:
+% \usepackage{soul}
+\usepackage{ulem} 
+
+
+\newtcbox{\mymath}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=yellow!30!black,
+    colback=yellow!30, boxrule=1pt,
+    #1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\bean{\begin{eqnarray*}}
+\def\eean{\end{eqnarray*}}
+\def\cd{\cdot}
+\def\vp{\varphi}
+\def\l {\langle}
+\def\re {\rangle}
+\def \dd {\partial}
+\def \ra {\rightarrow}
+\def \la {\lambda}
+\def \La {\Lambda}
+\def \De {\Delta}
+\def \DH {\Delta_{\rm HI}}
+\newcommand{\de}{\delta}
+\def \b {\beta}
+\def \al {\alpha}
+\def \ka {\kappa}
+\def \Ga {\Gamma}
+\def \ga {\gamma}
+\def \si {\sigma}
+\def \Si {\Sigma}
+\def \ep {\epsilon}
+\def \om {\omega}
+\def \Om {\Omega}
+\def \lap {\triangle}
+\def \ep {\epsilon}
+\newcommand{\Omo}{\ensuremath{{\Omega_\mathrm{m0}}}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Special definitions for this paper
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\ie}{\emph{i. e.}}
+\newcommand{\cf}{\emph{cf.}}
+\newcommand{\etal}{\emph{et al.}\xspace}
+% \newcommand{\eg}{\emph{e. g.}}https://www.overleaf.com/project/5c4d97b8dc2d227b5108e23d
+
+\newcommand{\Scal}{\mathcal S}
+\newcommand{\DD}{\mathcal D}
+\newcommand{\EE}{\mathcal E}
+\newcommand{\MM}{\mathcal M}
+\newcommand{\HH}{\mathcal H}
+
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\bn}{\boldsymbol{n}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bnabla}{\boldsymbol{\nabla}}
+\newcommand{\bell}{\boldsymbol{\ell}}
+\newcommand{\bal}{\boldsymbol{\alpha}}
+\newcommand{\lcdm}{\ensuremath{\Lambda}CDM}
+% \newcommand{\kevol}{\ensuremath{k}-evolution}
+\newcommand{\kess}{\ensuremath{k}-essence}
+
+
+%Farbod commands
+\newcommand{\Ge}{G_{\text{eff}}}
+\newcommand{\MP}{M_{\text{pl}}}
+\newcommand{\PP}{\mathcal{P}}
+
+\newcommand{\bnj}[1]{\textcolor{cyan}{[BL: #1]}}
+
+\definecolor{bittersweet}{rgb}{1.0, 0.44, 0.37}
+\newcommand{\fh}[1]{{\textcolor{blue}{\sf#1}}}
+\newcommand{\fhc}[1]{{\textcolor{bittersweet}{\sf[#1]}}}
+
+\newcommand {\gev}{{\itshape{gevolution} }}
+\newcommand {\kev}{{$k$-evolution }}
+\newcommand{\class}{\texttt{CLASS }}
+
+\definecolor{somered}{rgb}{0.7, 0.06, 0.1}
+\newcommand{\mk}[1]{\textcolor{somered}{ #1}}
+% \newcommand{\edit}[2]{\textcolor{red}{\st{#1} {#2}}}  
+\newcommand{\edit}[2]{\textcolor{red}{\sout{#1} {#2}}}  
+\newcommand{\hMpc}[1]{\ensuremath{#1\,h^{-1}\mathrm{Mpc}}}
+\newcommand{\cssq}{\ensuremath{c_s^2}}
+
+\newcommand{\jat}[1]{{\color[rgb]{0,0.6,0}#1}}
+\newcommand{\jar}[1]{{\color[rgb]{0,0.6,0} {\sf[#1]}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% \title{K-essence in the non-linear regime:}
+
+\title{Effects of the non-linear evolution on the effective gravity: the case of k-essence}
+
+\author[a]{Farbod Hassani,}
+\author[b,c]{Benjamin L'Huillier,}
+\author[b,d]{Arman Shafieloo,}
+\author[a]{Martin Kunz}
+\author[e]{and Julian Adamek}
+
+% \author[e]{,.}
+
+\affiliation[a]{
+Universit\'e de Gen\`eve, D\'epartement de Physique Th\'eorique and CAP,
+24 quai Ernest-Ansermet, CH-1211 Gen\`eve 4, Switzerland
+}
+\affiliation[b]{
+Korea Astronomy \& Space Science Institute, Yuseong-gu, Daedeok daero 776, 34055 Daejeon, Korea}
+\affiliation[c]{
+Department of Astronomy, Yonsei University, 50 Yonsei-ro, Seodaemun-gu, 03722 Seoul, Korea
+}
+\affiliation[d]{
+University of Science and Technology, Daejeon, Korea
+}
+\affiliation[e]{
+School of Physics and Astronomy, Queen Mary University of London, 327 Mile End Road, London E1 4NS, UK
+}
+
+\emailAdd{farbod.hassani@unige.ch} 
+\emailAdd{benjamin@kasi.re.kr}
+\emailAdd{shafieloo@kasi.re.kr}
+\emailAdd{martin.kunz@unige.ch}
+\emailAdd{julian.adamek@qmul.ac.uk}
+
+\abstract{
+In this paper as a first step toward quantifying the effect of dark energy/modified gravity non-linearity, we  probe the non-linearity of $k$-essence field through the effective parameter $\mu$ using the code \code{$k$-evolution} based on relativistic N-body code \code{gevolution}. 
+% We also introduce a new way to probe the space of parameters  non cosmological constant space of parameters. 
+}
+
+\begin{document}
+\maketitle
+\section{Note!}
+\fh{The draft now can be changed.}
+%%%%%%%%%%%%%%%%%
+%%%INTRODUCTION
+%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+
+Accelerating expansion of the universe is supported well by various theoretically motivated models including, simple cosmological constant, modified gravity (MG) and dark energy (DE) models. 
+All of the surviving models has been passed through the expansion history tests which are supported by the measurement of cosmic microwave background (CMB) anisotropies \cite{2016A&A...594A..13P}, type Ia Supernovae \cite{2018ApJ...859..101S}, and Baryon acoustic oscillations \cite{2017MNRAS.470.2617A} over the last decades. 
+In the near future by the upcoming surveys we will be able to probe the non-linear regime and high redshifts with unprecedented precision and put tight constraints on the cosmological parameters. 
+However precise study of DE/MG models in the non-linear regime is not carried out well yet. 
+Studying the non-linearities of such models in consistent way enables us to study the effects of DE/MG perturbations to the cosmological parameters precisely. In Section~\ref{sec:kess} we review the theory of $k$-essence and describe the theoretical framework, in the Section~\ref{sec:kevcode} we describe the \kev code which we have used to study the dark energy non-linearities and we compare \kev code with the Boltzmann and Newtonian N-body codes in details and finally the results are presented in Section~\ref{sec:res}.
+
+\section{$k$-essence model}
+\label{sec:kess}
+$k$-essence theories are the most general local theories for a scalar field which is minimally coupled to Einstein gravity and involves at most second time derivative in the equations of motion (\fhc{Ref}). These theories are a good candidate for the late accelerated expansion as well as the inflationary phase (\fhc{Any idea for the citation? and maybe we have to write in a better way}), in these theories the Lagrangian is written as a general function of kinetic term and the scalar field, $P(X,\varphi)$.
+We consider Friedman-Lemaître-Robertson-Walker (FLRW) metric in conformal Poisson gauge to study the perturbations around the homogenous universe.  
+\be
+ds^2 = a^2(\tau) \Big[ - e^{2 \Psi} d\tau^2 -2 B_i dx^i d\tau  + \big( e^{-2 \Phi} \delta_{ij} + h_{ij}\big)  dx^i dx^j \Big]  \;,
+\ee
+% We us mentioned equations to probe the non-linearities in the presence of $k$-essence scalar field.\\
+\\
+where $\tau$ is conformal time, $x^i$ are comoving cartesian coordinates, $\Psi$ and $\Phi$ are respectively the temporal and spatial scalar perturbations, $B_i$ and $h_{ij}$ are the vector and tensor perturbations. In the appendix \fhc{Ref} we have used the scalar-vector-tensor decomposition to recover the 4 scalars, 4 vectors and 2 tensors degrees of freedom in the metric, which we are going to use to obtain the equations of motion for the perturbations. 
+The full action in the presence of $k$-essence scalar field as a dark energy candidate reads,
+\be
+S=\frac{1}{16 \pi G_N} \int \sqrt{-g} R d^4 x + \int \sqrt{-g}  \mathcal{L}_{\rm kess} d^4 x + \int \sqrt{-g}  \mathcal{L}_m d^4 x ~. \label{eq:action}
+\ee
+Where $G_N$ is the  Newton's constant, $g$ is the determinant of the metric, $R$ is Ricci scalar, $\mathcal{L}_{\rm kess} = P (X, \varphi )$ is the general $k$-essence action in which $\varphi$ is the scalar field perturbation and $X=-\frac{1}{2} g^{\mu \nu} \partial_{\mu} \phi \partial_{\nu} \phi$ is the kinetic term and $\mathcal{L}_m$ is matter Lagrangian. More detail on $k$-essence models is found in \fhc{Refs?}.
+
+Variation of the action with respect to scale factor $a(\tau$) results in an equation for the evolution of scalar factor (Friedmann equation),
+\be
+\frac{3}{2} \mathcal{H}^{2}=-4 \pi G_N a^{2} \bar{T}_0^0 ~.
+\ee
+Where $\mathcal{H} = a'/a$ and the prime here denotes a derivative with respect to conformal time. $\bar{T}_0^0$ is the background stress tensor and the full stress energy tensor including matter (cold dark matter, baryon and radiation) and $k$-essence is defined as following,
+\be 
+T^{\mu \nu} \equiv \frac{2}{\sqrt{-g}} \frac{\delta \mathcal{L}_{\rm kess}}{\delta g_{\mu \nu}} +\frac{2}{\sqrt{-g}} \frac{\delta \mathcal{L}_{\rm m}}{\delta g_{\mu \nu}} ~.
+\ee
+We can parametrise the stress-energy tensor of a fluid with three parameters, namely the equation of state $w=\bar{p}/\bar{\rho}$, the sound speed $c_s^2$, given in the fluid rest-frame through $\delta p = c_s^2 \delta \rho$, and the anisotropic stress $\sigma$. For \kess\ \fh{at linear order} both $w$ and $c_s^2$ can vary as a function of time, while $\sigma=0$.
+On the other hand the divergence of $k$-essence stress energy tensor gives the equation for $k$-essence density perturbations through the continuity \footnote{In the \fh{kev Cite} paper we have shown that the Euler and continuity equations are equivalent to field equation.} equation,
+\be
+\delta'_{\rm kess} = -(1+w) \big(\partial_i v^i_{\rm kess}- 3 \Phi' \big) -3 \mathcal{H}  \bigg(\frac{\delta p _{\rm kess}} {\delta \rho_{\rm kess}} -w\bigg) \, \delta_{\rm kess} + 3  \Phi'  \bigg( 1+ \frac{\delta p_{\rm kess} } {\delta \rho_{\rm kess} }  \bigg) \, \delta_{\rm kess}+ \frac{1+w}{\rho} v^i_{\rm kess} \partial_i  \big(3\Phi - \Psi \big) \;.
+\ee
+Where $\delta_{\rm kess}$ is the density and $v^i_{\rm kess}$ is the velocity of the  $k$-essence. The former equation is the continuity equation where short wave corrections are also considered, later in this section we will discuss about the short wave corrections also more details about this equation could be found in \fhc{eq of  Ref \kev paper}.
+%
+%\begin{align}
+%\delta_{\rm kess}' = -(1+w) ( \theta - 3 \Phi') -3 \mathcal{H}  (\delta p / \delta\rho -w )  \delta_{\rm kess} \, .
+%\end{align} 
+We note that in Newtonian gauge we have the relation $\delta p = c_s^2 \delta\rho + 3 \mathcal{H} (c_s^2 - c_a^2) \bar\rho (1+w) \theta/k^2$, where we have introduced the adiabatic sound speed $c_a^2 = \bar\rho'/ \bar p'$.
+In the following sections we will drop the bar over background quantities and e.g.\ simply write $\rho$ for $\bar\rho$.
+
+% Calculating the stress tensor for the $k$-essence gives,
+% \be
+% \frac{3}{2} \mathcal{H}^{2}=4 \pi G a^{2} \big(\rho_{\rm m} + \+ \rho_{\rm kess} + \rho_r  \big)
+% \ee
+% Which $\rho_m$, $\rho_{\rm kess}$ and $\rho_r$ are respectively the matter, $k$-essence and radiation density. and and The former equation is a first order ordinary differential equation which we use to 
+% \be
+% T_{\mu \nu}=P g_{\mu \nu}+P_{, X} \partial_{\mu} \varphi \partial_{\nu} \varphi
+% \ee
+% \be 
+% u_{\mu}=\frac{\partial_{\mu} \varphi}{\sqrt{2 X}}, \rho=2 X P_{, X}-P, p=P
+% \ee
+% \be
+% T_{\mu \nu}=g_{\mu \nu} P(X, \varphi)+P_{, X} \partial_{\mu} \varphi \partial_{v} \varphi, T_{\mu \nu}=(\rho+p) u_{\mu} u_{\nu}+p g_{\mu \nu}
+% \ee
+The variation of the action with respect to {the lapse perturbation} $\Psi$ in the weak field approximation \footnote{In the weak field approximation we consider short wave corrections in the equations. The weak field approximation is briefly explained in Sec~. and in more details in \fh{(gev paper) and $kev$ paper}. }, results in the {Hamiltonian constraint} \cite{Adamek:2017uiq},
+\be 
+\nabla^2 \Phi = 3 \mathcal{H} \Phi^{\prime} + 3 \mathcal{H}^{2}\Psi + \frac{1}{2} \delta^{i j} \Phi_{, i} \Phi_{, j} + 4 \pi G_N a^{2} (1- 2 \Phi) \sum _X \bar{\rho}_X \delta_X  ~, \label{eq:Poisson}
+\ee
+where {$\delta_X=\delta\rho_X/\bar{\rho}_X$} is the Poisson-gauge density contrast for each species. We usually split the total density perturbation $\bar\rho\delta$ into the contribution from the different species that cluster, in our case cold dark matter, baryon, radiation and the $k$-essence scalar field:
+\be
+\bar{\rho}\delta = \rho_{\rm cdm} \delta_{\rm cdm} + \rho_{\rm kess} \delta_{\rm kess} + \rho_b \delta_b + \rho_r \delta_r \, ,
+\ee
+where cdm, $b$ , and kess respectively stand for cold dark matter (CDM), baryons, and k-essence. The last contribution is due to relativistic species (radiation and neutrinos) that we will neglect from now on as we are interested in late times. This does however have to be taken into account when going to high redshift, e.g.\ when considering the CMB.
+Moreover we define the short-wave corrections and relativistic parts in the {Hamiltonian constraint} equation as following,
+\begin{align}
+& \rm{R}(\vec x,\tau) \equiv 3 \mathcal{H} \Phi^{\prime} + 3 \mathcal{H}^{2}\Psi ~,  \label{eq:sw}\\ &
+\rm{S} (\vec x,\tau)\equiv  \frac{1}{2} \delta^{i j} \Phi_{, i} \Phi_{, j} -8 \pi G_N a^{2}  \Phi \sum _X \bar{\rho}_X \delta_X  ~.  \label{eq:re}
+\end{align}
+where {\textbf{$\rm {R}(\tau,\vec{x})$}} refers to relativistic terms and become important at large scales where $k \sim \mathcal{H}$ while we will show in the section \fhc{ref} it also affects the quasi-linear scales too. $\rm {S}(\tau,\vec{x})$ refers to the short wave corrections. These terms contribute due to the weak field scheme where we let the matter and $k$-essence densities become fully non-linear i.e.
+\be 
+\delta_m \sim \delta_{kess}\sim \mathcal{O}(1) ~,
+\ee
+while the metric perturbations remain small. As a result in this scheme in principle we could have highly dense $k$-essence and matter structures while the metric is still FLRW with small perturbations. Precisely, in weak field regime the potentials and scalar field are of order $\epsilon$,
+\be
+\Phi \sim \Psi \sim \varphi \sim \mathcal{O}(\epsilon) ~,
+\ee 
+while each spatial derivative reduce the order by $\sqrt{\epsilon}$. Specifically we have
+\be 
+\partial_i \Phi \sim \partial_i \Psi \sim \partial_i  \varphi \sim \mathcal{O}(\epsilon^{\frac 12})
+\ee 
+and full contribution from twice spatial derivative of the potentials and the scalar field,
+\be 
+\nabla^2 \Phi \sim \nabla^2 \Psi \sim \nabla^2  \varphi \sim \mathcal{O}(1)
+\ee
+ We will study the modification to the \fhc{Newtonian ? or what instead?} gravity due to the relativistic and short wave terms in Section~\ref{section:mu} in more details.
+Variation of the action with respect to $\beta$ (the scalar part of $h_{ij}$) defined in Eq.~\ref{eq:beta} leads to a constraint equation for $\Phi -\Psi$,
+\be 
+\nabla^{2} (\Phi - \Psi)-\left(3 \delta^{i k} \delta^{j l} \frac{\partial^{2}}{\partial x^{k} \partial x^{l}}-\delta^{i j} \nabla^2 \right) \Phi_{, i} \Phi_{, j}=4 \pi G_N a^{2}\left(3 \delta^{i k} \frac{\partial^{2}}{\partial x^{j} \partial x^{k}}-\delta_{j}^{i} \nabla^2\right) T_{i}^{j} \, .
+\ee
+In this expression $\Phi -\Psi$ is sourced by the anisotropic part of the stress energy tensor and a short wave correction term. In first order perturbation theory neglecting radiation perturbations we have $\Phi=\Psi$, while at the non-linear scales, short wave corrections and also anisotropic pressure generation in dark matter \fhc{and $k$-essence?} fluid would lead to non-zero $\Phi- \Psi$. \mk{\tt [I don't think that shell crossing is needed, it arises already in 2nd order perturbation theory, see \cite{Ballesteros:2011cm}. This ref and discussion should be moved here from the end of Section 5.]} \fhc{Done!}
+On the other hand at linear order, having radiation perturbations also leads to the  non-zero $\Phi- \Psi$, in the Figure~.\ref{fig:anisotropies},  generation of anisotropic pressure in the parameter $\eta (k,z) $, defined as the relative difference between $\Phi$ and $\Psi$,  $\eta (k,z) \equiv \frac{\Phi}{\Psi} -1$ is shown. In this figure $\eta$ due to the non-linearities (in matter and $k$-essence) and short-wave corrections in \kev on the left and due to the radiation perturbations in \class on the right are compared. At large scales, the contribution from radiation perturbations is much larger than contribution from non-linearities, while at quasi-linear regime the dominant contribution comes from the non-linearities. 
+ \begin{figure}%
+     \centering
+     \subfloat[ ]{{\includegraphics[scale=0.33]{./Figs/eta_kev}}}%
+     \qquad
+     \subfloat[ ]{{\includegraphics[scale=0.33]{./Figs/eta_class} }}%
+        \caption{\fhc{On the right, grids! Also maybe the x scale numbers 1.e-2 included!} The $\eta(k,z)$ from \kev on the left and from \class on the right at different redshifts are shown. In \kev code the $\eta$ is generated due to the non-lineaties in matter and $k$-essence and short wave corrections, while in \class the $\eta$ is due to the radiation perturbations. At high redshifts and large scales, $\eta$ generated due to the radiation perturbations in \class is much larger than $\eta$ due to the non-linearities. While at quasi linear regime, $\eta$ due to the radiation perturbations is very suppressed and the dominant contribution comes from the non-linearities as it is  shown on the left in \kev results.}
+     \label{fig:anisotropies}%
+ \end{figure}
+
+Variation of the action with respect to the {shift perturbation} results in {the momentum constraint} ,
+\be 
+-\frac{1}{4} \nabla^2 B_{i}-\Phi_{, i}^{\prime}-\mathcal{H} \Psi_{,i}=4 \pi G_N a^{2} T_{i}^{0} \label{eq:vector}
+\ee
+% Using Helmholtz\jat{'s theorem} we can decompose $B_{i}$ into the curl-free and divergence-free components,
+% \be 
+% B_i= \nabla_i B + \tilde {B}_i, \; \; \; \delta^{i,j} \tilde {B}_{i,j}=0
+% \ee 
+where according to the Poisson gauge \ref{eq:gauge}, $B_i$ is divergence less as  $\delta^{i,j}  {B}_{i,j}=0$. So the divergence of the Eq.~\ref{eq:vector} reads,
+\be 
+-\nabla^2 \big(\Phi^{\prime}+\mathcal{H} \Psi \big)=4 \pi G_N a^{2} \partial^i T_{i}^{0} \,. \label{eq:divergence}
+\ee
+{If the stress-energy can be split into contributions from independent constituents, \ we can define the divergence $\theta_X$ for each constituent such that}
+ \be 
+\partial^i T_{i}^{0}  = \sum_X \bar{\rho}_X \big(1+w_X \big) \theta_X  {= \theta_\mathrm{tot} \sum_X \bar{\rho}_X \big(1+w_X \big)}\,.
+\ee
+{This definition of $\theta_X$ coincides with the linear velocity divergence in the case where the constituent can be described by a fluid, but it generalizes to situations where this is no longer the case. We can now see that} the relativistic terms in the {Hamiltonian constraint} Eq.~\eqref{eq:Poisson} {can be related to a different choice of density perturbation},
+\be 
+\nabla^2 \Phi =  \frac{1}{2} \delta^{i j} \Phi_{, i} \Phi_{, j} +4 \pi G_N a^{2} (1- 2 \Phi) \sum _X \bar{\rho}_X \Delta_X  ~, \label{eq:Poisson2}
+\ee
+where {$\Delta_X = \delta_X - 3 \mathcal{H} (1+w_X) \nabla^{-2}\theta_\mathrm{tot}$  is the comoving density contrast.} 
+{Apart from the short-wave corrections, which are the leading higher-order weak-field terms, Eq.~(\ref{eq:Poisson2}) is the Poisson equation relevant in the context of modified gravity. Neglecting the short-wave terms the equation is linear even if the perturbations in the matter fields are large, and one can pass to Fourier space. Modifications of gravity where the gravitational coupling depends on time and scale can then be parametrized by introducing a function $\mu(k,z)$ such that
+\be
+-k^2 \Phi = 4 \pi G_N a^2 \mu(k,z) \sum _X \bar{\rho}_X \Delta_X\,,
+\ee
+where the choice $\mu(k,z)=1$ restores standard gravity. Furthermore, if one chooses to interpret the dark energy perturbations as a modification of gravity, the sum on the right-hand side would exclude $X = \mathrm{kess}$. Such an interpretation makes sense if the dark energy field is not coupled directly to other matter, and it is therefore impossible to distinguish it observationally from a modification of gravity. \mk{\tt [cite Kunz:2006ca :)]}
+
+Adopting this interpretation we can define an effective modification $\mu(k,z)$ as
+\be
+\mu(k,z)^2 = \frac{k^4 \left\langle\Phi \Phi^\ast\right\rangle}{\left(4 \pi G_N a^2 \bar{\rho}_m\right)^2 \left\langle \Delta_m \Delta_m^\ast\right\rangle}\,, \label{eq:mu_1}
+\ee
+where $\bar{\rho}_m = \bar{\rho}_\mathrm{cdm} + \bar{\rho}_b$ and $\bar{\rho}_m \Delta_m = \bar{\rho}_\mathrm{cdm} \Delta_\mathrm{cdm} + \bar{\rho}_b \Delta_b$. Since our simulations are carried out in Poisson gauge they internally use $\delta_m$ and do not compute $\Delta_m$ directly. However, the difference between the two quantities is only appreciable at very large scales where $\theta_\mathrm{tot}$ is given by its linear solution. For the purpose of computing $\mu(k,z)$ from simulations we therefore write \fhc{We have to mention that $k$-essence perturbations do not change the scale of matter and potential non-linearities, so we can still use the linear theory for $\theta$ in \kev case! Do you agree?}
+\be
+\Delta_m \simeq \delta_m \left(1 + \frac{3 \mathcal{H} T^\theta_\mathrm{tot}(k,z)}{k^2 T^\delta_m(k,z)}\right)\,,
+\ee
+where $T^\theta_\mathrm{tot}(k,z)$ and $T^\delta_m(k,z)$ are the linear transfer functions of $\theta_\mathrm{tot}$ and $\delta_m$, respectively. These can be computed with a linear Einstein-Boltzmann solver like \class.
+}
+\fhc{Also we precisely have them from \kev! In the figure that I mention the contribution to $\mu$ one of them which scales like $\mathcal{H}/k$ is exactly this term, I just named them relativistic term, agree? I also I've shown that in one Fig this term from \class and \kev agree well at large scales, but at quasi-linear scales where $\Phi'$ becomes important the two codes differ (ask me I'll tell U why)}. The $\mu(k,z)$ in equation \ref{eq:mu_1}  could be written in the following form, if we use the modified Poisson equation Eq.~\ref{eq:Poisson2} and definitions Eq.~\ref{eq:sw},
+\fhc{Please check the following expression and let me know if U agree.}
+\begin{align}
+{\mu}^{2}(k,z)  = & 1 
++\frac{ \bar{\rho}_{\rm kess}^2  \left \langle \Delta_{\rm kess}  \Delta^\ast_{\rm kess} \right \rangle} {\bar{\rho}_{m}^2 \left \langle  \Delta_{m} \Delta^{\ast}_{m}    \right \rangle } 
+%%%%%%%%%%%%%%%%%%%
++  \frac{ \left \langle  \rm{S}  \rm{S}^\ast  \right \rangle  } { \left(4 \pi G_N a^2 \bar\rho_{m} \right)^2  \left \langle   \Delta_{m}  \Delta_{m}^\ast  \right \rangle }  
+%%%%%%%%%%%%%%%
++ \frac{ \bar{\rho}_{\rm kess}  \left \langle \Delta_{\rm kess}  \Delta^\ast_{\rm m} + \Delta_{\rm m}  \Delta^\ast_{\rm kess} \right \rangle} {\bar{\rho}_{m} \left \langle  \Delta_{m} \Delta^{\ast}_{m}    \right \rangle }  
+%%%%%%%%%%%%%%%
+\nonumber  \\ &
++\frac{ \left \langle  \rm{S}  {\Delta^\ast_m} + {\Delta_m}  \rm{S}^\ast     \right \rangle  } { \left(4 \pi G_N a^2 \bar\rho_{m} \right)  \left \langle   \Delta_{m}  \Delta_{m}^\ast  \right \rangle }  
+%%%%%%%%%%%%%%%
++\frac{ \bar \rho_{\rm kess}\left \langle  \rm{S}  {\Delta^\ast_{\rm kess}} + {\Delta_{\rm kess}}  \rm{S}^\ast     \right \rangle  } { \left(4 \pi G_N a^2 \bar\rho_{m} \right)^2\left \langle   \Delta_{m}  \Delta_{m}^\ast  \right \rangle }  
+\label{mu_formulae2}
+\end{align}
+From the two equavalent definitions of $\mu$, we will make a new estimator to take control over the errors in N-body simulation in the appendix \fhc{Ref}.
+
+\section{\kev code}
+\label{sec:kevcode}
+% We are going to use N-body $k$-evolution code based on gevolution, in which the full sets of non-linear relativistic equations, six Einstein equations from $G_{\mu \nu} = 8 \pi G T_{\mu \nu}$ and one scalar field equation is solved ( equations found in the Ref). 
+% \bnj{talk about the code: need a full GR formalism for nonlinear structure formation. }
+% \bnj{Is there any Newtonian $N$-body code for k-essence?}\fh{No }\bnj{Great!}\\
+% \bnj{I know there are for $f(R)$ and DGP at least. maybe worth reviewing some of the existing codes. (actually this is probably more relevant for your first paper)}
+% $k$-evolution is a relativistic $N$-body code based on gevolution \cite{2016JCAP...07..053A} in which the full sets of non-linear relativistic equations, six Einstein's equations from $G_{\mu \nu} = 8 \pi G T_{\mu \nu}$ and one scalar field equation are solved \cite{Adamek:2017uiq, k-evolution} to update the particle positions and velocities. 
+% $k$-evolution is a grid-based code with fixed resolution.  
+
+\kev \fhc{cite-kev} is a relativistic $N$-body code based on \gev \cite{2016JCAP...07..053A}.
+The full sets of non-linear relativistic equations, six Einstein's equations $G_{\mu \nu} = 8 \pi G T_{\mu \nu}$ and the scalar field equation are solved on a fixed grid with fixed resolution \cite{Adamek:2017uiq, k-evolution} to update the particle positions and velocities. 
+The effects of non-linear clustering of $k$-essence scalar field on matter and gravitational potential power spectra are studied in \fhc{cite-kev}. As it is explained in details in the companion paper, we have not considered the non-linearities in the $k$-essence differential equations and all the non-linearities come from being coupled to the matter and potentials.
+In order to probe the non-linearities of both matter and $k$-essence scalar field, we combined the data from two simulations with $N_\text{grid} = 3840^3$ with two different resolutions: large-scale / low-resolution, with $L = \hMpc{9000}$ and a physically smaller box with $L=\hMpc{1280}$, corresponding to respectively \hMpc{2.3} and \hMpc{0.33} length resolution. Moreover for some figures to study very large and very small scales, we also have used a much higher spatial resolution simulation with $N_\text{grid} = 3840^3$, $L=\hMpc{300}$ corresponding to \hMpc{0.07} length resolution and much lower spatial resolution simulation with $N_\text{grid} = 3840^3$, $L=\hMpc{90000}$ corresponding to \hMpc{23.43} length resolution mainly to study the relativistic terms.
+
+In the output we write all the relevant power spectra including matter and $k$-essence densities, both gravitational potentials $\Phi$, $\Psi$, $\Phi'$ and short wave corrections $\rm S$. We use the mentioned power spectra to measure the effective gravity parameter $\mu(k,z)$ that will be discussed in the following sections. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%CHAPTER%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\label{sec:res}
+\subsection{Relativistic and short-wave corrections}
+\fh{Maybe we have to find a better name for relativistic corrections? }
+In this subsection we quantify the contribution from short wave corrections and relativistic terms to the $\check{\mu}$ using the results of \kev for the $k$-essence field with $c_s^2=10^{-7}$, knowing the effects of these terms is important since one can quantify the error is introduced due to neglecting these terms in Newtonian N-body simulations and linear Boltzmann codes. In the Figure~\ref{fig_powers_RE} we have plotted the short wave corrections ${S(k,z)}/{\mathcal H^2}$ and relativistic terms ${\rm{R} (k,z)}/{\mathcal H ^2}$ as a function of wavenumber at different redshifts. We have divided by $\mathcal{H}^2$ to make these quantities dimensionless. According to the figure the short wave corrections are very small compared to the relativistic terms at all wavenumbers and redshifts we are interested, the short wave terms decay for small $k$ at all redshifts and also decay at large $k$ at high redshifts, while at lower redshifts there is a turn around scale (e.g. $k\sim 1 h Mpc^{-1}$ at z=0) in which the short wave terms start to grow with different power at different redshifts due to non-linearities. On the other hand in the left of the Figure~\ref{fig_powers_RE}, the relativistic contribution $\rm{R}(k,z)/\mathcal{H}^2$ as a function of wavenumber at different redshifts is sketched, as expected these terms become important at low wavenumbers and higher redshifts. It is interesting to see that there is a scale in which this field $\rm{R}(k,z)$ becomes negative and acts as degravitation, the reason is that at those scales the negative contribution to relativistic terms i.e. $\Phi'$ dominates since $|{\Phi'}/{\mathcal H}|> \Phi$, this happens only due to non-linearities and at the linear level $\rm{R}(k,z)$ is positive at all scales and decay at large ks.  In the Figure~\ref{fig:mu_contribution} all the terms contributing to $\check{\mu}$, relativistic terms, $k$-essence density and short wave corrections is illustrated, as it is clear at all scales and all redshifts we can safely neglect short wave contribution to $\check{\mu}$, also in this figure we can see the error of neglecting relativistic terms at any wave number, to have a percent precision on $\check{\mu}$ one has to keep the relativistic terms to $\sim k=0.01 \, \rm{h/Mpc}$ at z=10 and $\sim k=0.005 \, \rm{h/Mpc}$ at z=0 in the analysis.
+\begin{figure}%
+    \centering
+    \subfloat[Relativistic contribution $\rm R(k,z)$ to the full Poisson equation as a function of wavenumer at different redshifts is plotted, this field increases at large scales and becomes negligible at quasi-linear regime, while at small scales changes sign and starts to grow. Dashed lines represent the negative value of this field which happens at small scales.]{{\includegraphics[scale=0.36]{./Figs/relativistic-power} }}%
+    \qquad
+    \subfloat[Short wave contribution $\rm S(k,z)$ to the full Poisson equation as a function of wavenumber at different redshifts is sketched, this quantity is negligible compared to relativistic terms at all wavenumbers and redshifts. At low redshifts there is minimum at small scales in which the field starts to grow exponentially as a function of $k$.]{{\includegraphics[scale=0.36]{./Figs/short-wave-power} }}%
+    \caption{Relativistic terms on the left and short wave corrections on the right in Fourier space in terms of wave number at different redshifts are shown. }%
+    \label{fig_powers_RE}%
+\end{figure}
+\begin{figure}%
+    \centering
+    \subfloat[ ] {{\includegraphics[scale=0.36]{./Figs/mu-sw-re_large.pdf} }}%
+    \qquad
+    \subfloat[ ]{{\includegraphics[scale=0.36]{./Figs/mu-sw-re_mid.pdf} }}%
+    \caption{Relativistic terms, short wave corrections and $k$-essence clustering contribution to $\mu$ at different wave numbers for couple of redshifts is shown. The short wave corrections are negligible at the interesting scales and we can safely neglect from dynamics, while neglecting relativistic terms at linear and quasi-linear regime would result in an error on $\mu$ depending on the scale and redshift. }%
+    \label{fig:mu_contribution}
+\end{figure}
+\begin{figure}%
+    \centering
+\includegraphics[scale=0.36]{./Figs/CLASS_kev.pdf} %
+\caption{The same figure as previous ones which for a wide range of wave numbers the CLASS and $k$-evolution are compared and as it is shown they agree well at large scales, but there are some differences at small scales due to the non-linearities which is more clear in the previous figures.\fh{y-axis is $\mu-1$} \fh{We have to decide which figure is more interesting and ..? this one or the previous ones?  }}
+    \label{fig:CLASS_kev}%
+\end{figure}
+
+
+\subsection{Linear versus non-linear $\mu$}
+In this section we compare the $\mu$ function obtained from $k$-evolution, which includes non-linearities and relativistic corrections with the results from the linear Boltzmann code \class \cite{2011JCAP...07..034B}. The difference between Poisson equation in these codes are sketched in Figure~\ref{picture_Poissoneq}.  In Figure~\ref{figmu}  the $\mu$ from CLASS (dashed) and $k$-evolution (dotted lines) at different redshifts for two different sound speeds of $k$-essence field, $c_s^2 =10^{-4}$ and $c_s^2 =10^{-7}$ are plotted. 
+
+
+
+% Fig.~\ref{figmu} we show the differences between $\mu$ from CLASS and $k$-evolution at different redshifts for two different sound speed. As one can see we recover GR/LCDM at high wavenumbers and high redshifts. The reason that we expect to recover GR at high redshifts is that the DE/MG starts to dominate at low redshifts which is well supported by observations, while the reason for having GR at high wavenumbers is that we have very tight constraints on gravity at small scales, theories that give non-GR gravity at small scales are not viable to be considered. It is important to mention that $k$-essence model has a sound horizon inside of which the perturbations decay, which is why one recovers  GR/\lcdm\ on small scales. \\
+% \edit{The reason that $\mu$ in the $k$-evolution is more suppressed than $\mu$ in the class is that the non-linearity of matter is more effective than non-linearities of $k$-essence scalar field and from the formula of $\mu$ in \ref{mu_formulae} one can see that linear codes overestimate $\mu$. From the figure one sees different $mu$ at low redshifts from the N-body code $k$-evolution, which warns us about using the linear codes for putting constraints on the cosmological parameters.}
+% {$\mu$ is suppressed in \kevol\ with respect to the linear prediction as computed by CLASS,
+% \fh{since} non-linear effects are stronger in the matter case than in the \kess\ scalar field, and from eq.~\eqref{mu_formulae} one can see that the linear code overestimates $\mu$ in the transition regime. 
+% Therefore, in the context of precision cosmology, it is important to include a full general-relativistic treatment of the non-lineaities.} 
+% \fh{About the general relativistic part I'm not sure, although the code is relativistic but we neglect non-linearities in the Poisson equation which we use to make $mu$! seems contradictory, this should be discussed.}
+% \bnj{well mu itself is a non-relativisitc approximation, but it is obtained via full GR treatment no?}
+
+\mk{In \lcdm, where there are no dark energy perturbations, or modifications of gravity, we would have $\mu = 1$ on all scales and at all times. From the figure, we see that for the k-essence models we have $\mu > 1$ on large scales, while we recover the \lcdm\ limit on small scales or at early times.}
+The reason that we expect to recover GR at high redshifts is that the DE/MG starts to dominate at low redshifts which is well supported by observations. \mk{In our model this is included by choosing a constant $w$ close to $-1$, which ensures that the ratio of dark energy to dark matter density scales like $a^{-3w}$ so that the dark energy quickly becomes sub-dominant in the past. {\tt [what is $w$ in the sims?]}}
+\mk{At high wave numbers, the k-essence perturbations are suppressed due to the existence of a sound horizon, roughly at the comoving wave number $k = c_s a H$. This is highly desirable as gravity is very well tested on small scales, so that models that lead to significant changes on solar system scales are ruled out by observations.}
+
+On large scale, the maximum deviation from $\mu=1$ is about 5\%, therefore the effect is small.
+However, it is interesting to notice that for $\cssq=10^{-4}$, the transition from the GR regime to the MG regime ($\mu\neq 1$) occurs at $k\simeq\hMpc{10^{-1}}$, while for $\cssq=10^{-4}$ it occurs around $k\simeq \hMpc 1$.
+In addition, for the $\cssq=10^{-4}$ case, the results from \code{CLASS} and \kev\ are undistinguishable at least until $z=0.5$, and start to differ slightly at $z=0$. 
+For the $\cssq=10^{-7}$ case, while the results from \code{CLASS} and \kev\ are consistent at both high- and low-$k$, the transition regimes occur at different wavenumbers. 
+This is because the non-linear effects are stronger in the matter case than in the \kess\ scalar field case. 
+Therefore, the linear code overestimate $\mu$ in the transition regime.
+
+\mk{\tt [say that differences linear-NL appear in sub-horizon regimes, see figure 9. sound-horizon: earlier decay due to DM non-linearity, modelled well by j-evolution but not clss; sub-horizon: excess wrt j-evolution due to residual DM-induced DE clustering? agrees with class but this is probably a coincidence?]}
+
+\mk{\tt [Do we have a difference between the $\Phi$ and the $\Delta$ form of $\mu$ on intermediate scales where the Poisson equation may not be good? As mentioned above, on large scales linear perturbation theory holds, and on small scales Newtonian gravity is good.]}
+
+
+\begin{figure}%
+    \centering
+    \subfloat[$\mu(k,a)$ for the fluid with $c_s^2=10^{-4}$]{{\includegraphics[scale=0.36]{./Figs/mu_cs2_e4} }}%
+    \qquad
+    \subfloat[$\mu(k,a)$ for the fluid with $c_s^2=10^{-7}$ ]{{\includegraphics[scale=0.36]{./Figs/mu_cs2_e7} }}%
+    \caption{$\mu(k,a)$ is as a function wavenumber at different redshifts for two sound speeds is shown, for the smaller sound speed we see stronger deviations from CLASS which extends to all scales. }%
+    \label{figmu}%
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%
+
+
+
+% \section{Fitting $\tanh$}
+
+ 
+
+\subsection{A fitting function for $\mu$ in \kess}
+
+In order to simplify the analysis, we approximate the computed $\mu$ with a simple fitting formula.
+The fact that we recover GR/LCDM at small scales and we have a constant modification to GR at large scales motivate us to choose a function that smoothly connects two different regimes, namely, between $\mu\simeq$ constant on large scales to $\mu=1$ on small scales.  \fh{We have to comment that this fitting function does not work for large "enough" scales which the relativistic effects dominate according to the figure which these effects are compare. Also it is interesting to say that these fitting function is for the real $\mu$ which the relativistic effects are not included.}
+We fit $\mu(k,a)$ as follows:
+\be
+f(k|\alpha,\beta,\gamma) = 1+\alpha \left(1-\tanh \big(\beta (\ln k-\gamma) \big)\right),
+\ee
+\begin{figure}%
+    \centering
+    \subfloat{{\includegraphics[scale=0.36]{./Figs/tanh_parametrization_beta} }}%
+    \qquad
+    \subfloat{{\includegraphics[scale=0.36]{./Figs/tanh_parametrization_gamma.pdf} }}%
+    \caption{The fitting function $\tanh$ with three free parameters, when varying one parameter is shown. $\alpha$ is simply the amplitude, for the fixed $\alpha$ and $\gamma$, the three different curves corresponding to different $\beta$ are shown on the left which shows that $\beta$ controls the slope of transition. On the right $\gamma$ is changed and $\alpha$ and $\beta$ are fixed, from the figure we can see that $\gamma$ specifies the scale in which the transition happens.}%
+    \label{figmu_params}%
+\end{figure}
+
+where $\alpha$ controls the amplitude of $\mu$ on large scales, $\gamma = \ln\kappa$ the location of the transition, and $\beta$ the steepness of the transition.
+$\alpha$, $\beta$, and $\gamma$ depend on time as well as the cosmology. 
+The fit enables us to model $\mu(k,a)$ in a simple way and to study its evolution by studying time and scale evolution of the parameters.
+We perform the fit in the linear (\code{CLASS}) and non-linear (\kev) cases. 
+Fig.~\ref{fitting_mu} shows the evolution of three fitting parameters at different redshifts for both the linear (solid lines) and non-linear (dashed lines) cases.
+As expected from Fig.~\ref{figmu}, for $c_s^2=10^{-4}$, there is little difference between the linear and non-linear cases.  
+For the $c_s^2=10^{-7}$ case, the fitted amplitudes ($\alpha$) are consistent between the linear and non-linear cases. 
+Most of the difference arises in the steepness ($\beta$) and the location ($\kappa$) of the transition 
+
+% [I assume the following is a leftover fragment]
+%By measuring the potential and density matter power spectra $\PP_\Phi$ and $\PP_\delta$ at different redshifts one can calculate $\mu$, fit it, and the evolution of the parameters can inform us about the.\\
+
+
+
+
+% \begin{figure}%
+%     \centering
+%     \subfloat[$c_s^2 = 10^{-4}$]{{\includegraphics[scale=0.36]{fitting_cs2_4_values} }}%
+%     \qquad
+%     \subfloat[$c_s^2=10^{-7}$]{{\includegraphics[scale=0.36]{fitting_cs2_7_values} }}%
+%         \caption{The fitted variables for the $k$-essence with  $c_s^2=10^{-4}$ (left) and $10^{-7}$ (right) at different redshifts. 
+%         Points and dashed lines are respectively the results of $k$-evolution and \code{CLASS}.
+%                 }
+
+%     \label{fitting_mu}%
+% \end{figure}
+
+\begin{figure}%
+    \centering
+   {{\includegraphics[scale=0.36]{./Figs/fitting_parameters_mu_cs2_e4.pdf} }}%
+    \qquad
+   {{\includegraphics[scale=0.36]{./Figs/fitting_parameters_mu_cs2_e7.pdf} }}%
+        \caption{The fitted variables for the $k$-essence with  $c_s^2=10^{-4}$ (left) and $10^{-7}$ (right) at different redshifts. 
+        Points and dashed lines are respectively the results of $k$-evolution and \code{CLASS}.
+        \bnj{How about plotting $\kappa = \exp\gamma$, which corresponds to the scale of transition, and it would be more spread out (gamma is veryflat and close to 0)} \fh{Lets discuss about it}}
+    \label{fitting_mu}%
+\end{figure}
+
+\begin{figure}%
+    \centering
+    {{\includegraphics[scale=0.35]{./Figs/res_cs2_4_kev.jpg} }}%
+    \qquad
+    {{\includegraphics[scale=0.35]{./Figs/res_cs2_7_kev.jpg} }}%
+        \caption{The relative error for the fits compared to actual $\mu$ obtained from $k$-evolution data for two different sound speed $c_s^2 = 10^{-7}$ (right), $c_s^2 = 10^{-4}$ (left). As it is clear from the plots the fitting function works well for $k$-evolution data for both sound speed and all redshifts.}
+    \label{fitting_mu}%
+\end{figure}
+
+
+\begin{figure}%
+    \centering
+    {{\includegraphics[scale=0.35]{./Figs/res_cs2_4_class.jpg} }}%
+    \qquad
+    {{\includegraphics[scale=0.35]{./Figs/res_cs2_7_class.jpg} }}%
+        \caption{The relative error of the fits compared to the \code{CLASS} results for two sound speed  $c_s^2 = 10^{-7}$ (right), $c_s^2 = 10^{-4}$ (left) is plotted. The result shows that the fitting function works almost well at high redshifts and all wave numbers, while for the case $c_s^2 =10^{-7}$ at z=0 the fit does not work perfectly at small scales which the peak is around the sound horizon of $k$-essence. The fact that the fitting function does not work well for the linear case \class comes from the fact that the transition does not follow the suggested fitting function around sound horizon of $k$-essence, while for the non-linear case we found a perfect fit.}
+    \label{fitting_mu}%
+\end{figure}
+
+
+%
+%\begin{figure}%
+%    \centering
+%    {{\includegraphics[scale=0.36]{./Figs/fitting_cs2_4_values_v2.jpg}} }%
+%    \qquad
+%     {\includegraphics[scale=0.36]{./Figs/fitting_cs2_7_values_v2.jpg}} %
+%        \caption{The fitted variables for the $k$-essence with  $c_s^2=10^{-4}$ (left) and $10^{-7}$ (right) at different redshifts. 
+%        Points and dashed lines are respectively the results of $k$-evolution and \code{CLASS}.
+%                }
+%    \label{fitting_mu}%
+%\end{figure}
+%
+
+%
+%\begin{figure}%
+%    \centering
+%    \subfloat[$c_s^2 = 10^{-4}$]{{\includegraphics[scale=0.35]{./Figs/res_cs2_7_class.jpg} }}%
+%    \qquad
+%    \subfloat[$c_s^2=10^{-7}$]{{\includegraphics[scale=0.35]{./Figs/res_cs2_4_class.jpg} }}%
+%        \caption{The relative error of the fits compared to the \code{CLASS} results for two sound speed  $c_s^2 = 10^{-7}$ (left), $c_s^2 = 10^{-4}$ (right) is plotted. The result shows that the fitting function works almost well at all redshifts and all wavenumbers and reaches to 3$\%$ relative error at some wavenumbers for $c_S^2 = 10^{-7}$.}
+%    \label{fitting_mu}%
+%\end{figure}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{figure}%
+%     \centering
+%     \subfloat[$c_s^2 = 10^{-4}$]{{\includegraphics[scale=0.06]{logalpha_beta_cs2_4.jpg}}}%
+%     \qquad
+%     \subfloat[$c_s^2=10^{-7}$]{{\includegraphics[scale=0.06]{logalpha_beta_cs2_7.jpg} }}%
+%         \caption{$\log(\alpha)$ versus $\beta$ for $k$-evolution and \code{CLASS} data for different sound speed $c_s^2=10^{-4}$ (left) and $10^{-7}$ (right) is plotted. The arrow shows the direction of redshift.}
+%     \label{fitting_mu}%
+% \end{figure}
+
+% \begin{figure}%
+%     \centering
+%   {{\includegraphics[scale=0.06]{logalpha_gamma_cs2_4.jpg}}}%
+%     \qquad
+%     {{\includegraphics[scale=0.06]{logalpha_gamma_cs2_7.jpg} }}%
+%         \caption{$\log(\alpha)$ versus $\gamma$ for $k$-evolution and \code{CLASS} data for different sound speed $c_s^2=10^{-4}$ (left) and $10^{-7}$ (right) is plotted. The arrow shows the direction of redshift.}
+%     \label{fitting_mu}%
+% \end{figure}
+
+% \begin{figure}%
+%     \centering
+%   {{\includegraphics[scale=0.06]{beta_gamma_cs2_4.jpg}}}%
+%     \qquad
+%   {{\includegraphics[scale=0.06]{beta_gamma_cs2_7.jpg} }}%
+%       \caption{$\gamma$ versus $\beta$ for $k$-evolution and \code{CLASS} data for different sound speed $c_s^2=10^{-4}$ (left) and $10^{-7}$ (right) is plotted. The arrow shows the direction of redshift.}
+%     \label{fitting_mu}%
+% \end{figure}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}%
+    % \centering
+    % \subfloat[$c_s^2 = 10^{-4}$]
+    {{\includegraphics[scale=0.36]{./Figs/logalpha_beta_cs2_4.pdf}}}%
+    % \subfloat[$c_s^2=10^{-7}$]
+       \qquad
+%        \hspace*{-2cm}  
+    {{\includegraphics[scale=0.36]{./Figs/logalpha_beta_cs2_7.pdf} }}%
+    \qquad
+    {{\includegraphics[scale=0.36]{./Figs/logalpha_gamma_cs2_4.pdf}}}%
+    \qquad
+    {{\includegraphics[scale=0.36]{./Figs/logalpha_gamma_cs2_7.pdf} }}%
+    \qquad    
+    {{\includegraphics[scale=0.36]{./Figs/beta_gamma_cs2_4.pdf}}}%
+    \qquad    
+    {{\includegraphics[scale=0.36]{./Figs/beta_gamma_cs2_7.pdf}}}%
+    \label{fitting_mu}%
+    
+        \caption{Evolution of the fit parameters $\log(\alpha)$, $\beta$, and $\gamma$ for $k$-evolution and \code{CLASS} data for different sound speed $c_s^2=10^{-4}$ (left) and $10^{-7}$ (right) is plotted. The arrow shows the direction of increasing redshift. For the case of low sound speed one get different parameters from \kev compared to the linear code \class, while for the low sound speed the parameters almost match and suggests that one could simply use linear Boltzmann codes for treating low sound speed $k$-essence fluid.
+        }
+    \label{fig:mu_params}%
+    
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+  \begin{figure}%
+     \centering
+     \subfloat[ ]{{\includegraphics[scale=0.33]{./Figs/halo-fit_kev_gev_cs02.pdf}}}%
+     \qquad
+     \subfloat[ ]{{\includegraphics[scale=0.33]{./Figs/halo-fit_kev_gev_cs07.pdf} }}%
+        \caption{$\mu(k,z)$ from four different simulations and for two sound speeds are compared, on the left for the case $c_s^2=10^{-4}$ all the curves agree well which shows that for the low sound speed we can trust linear codes. On the left $\mu(k,z)$ for the $k$-essence with sound speed $c_s^2=10^{-7}$ is plotted, the result shows that Halo-fit and \gev (CLASS-interface) results are almost the same while $k$-evolution starts to deviate at a certain wave number from them which is due to the non-linearities of $k$-essence field which is absent in the other codes. The linear code \class result is completely different with the other codes at the scales smaller than the scale of matter non-linearities. }
+    \label{eta_kev_class}%
+ \end{figure}
+
+
+%
+%\begin{figure}%
+%   \includegraphics[scale=0.07]{./Figs/eta_comparison.jpg} %
+%       \caption{$\eta = \frac{\Phi}{\Psi}$ from $k$-evolution for two sound speeds $c_s^2=10^{-4}$ represented as solid line and $c_s^2=10^{-7}$ shown as dots and the relative difference between them is plotted. The effect of $k$-essence clustering on $\eta$ is subpercent.}
+%    \label{eta}%
+%\end{figure} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+In this paper we have studied  the non-linearities in the presence of $k$-essence scalar field through the $\mu$ function. 
+We have shown that for the small sound speed we see large deviation from linear theory, which means that using non-linear N-body codes for the future surveys is a necessity. 
+Moreover we introduced a $\tanh$ fitting function for the modified Poisson equation in the presence of general MG/DE model which is motivated by $k$-essence model, one can make $\mu$ function at different redshifts by measuring gravitational potential and matter power spectra, fitting $\tanh$ to the observed $\mu$ enables one to study any deviation from GR at different scales and different redshifts. 
+Moreover one can study the behaviour of MG/DE (if it was the case) model from the observational data through the three parameters of $\tanh$.
+\setcounter{equation}{0}
+%%%%%%%%%%%%%%%%%%%%%
+
+ 
+\section*{Acknowledgements}
+FH would like to thank Jean-Pierre Eckmann, Mona Jalilvand.
+FH and MK acknowledge financial support from the Swiss National Science Foundation. This work was supported by a grant from the Swiss National Supercomputing Centre (CSCS) under project ID s710.
+BL would like to acknowledge the support of the National Research Foundation of Korea (NRF-2019R1I1A1A01063740). \jat{JA acknowledges funding by STFC Consolidated Grant ST/P000592/1.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \appendix 
+ \section{The degrees of freedom}
+ \fh{
+Using Helmholtz's theorem we can decompose $B_{i}$ into the curl-free (longitudinal) and transverse  (divergence-free) components,
+\be 
+B_i= B_i^{\perp} + B_i^{\parallel}  \text{     where      } \vec{\nabla} \cdot B^{\perp}=\vec{\nabla} \times  B^{\parallel}=0
+\ee
+ Also using scalar-vector-tensor decomposition~\cite{Lifshitz:1945du} we can decompose the tensor perturbations analogously in the following form
+  \be 
+ h_{ij} = h_{ij}^{\parallel} + h_{ij}^{\perp}+  h_{ij}^{(S)}  ~.
+ \ee
+ where 
+ \be
+  h_{ij}^{\parallel} = \big( \nabla_i \nabla_j - \frac{1}{2} g_{ij} \nabla^2 \big) \beta ~. \label{eq:beta}
+ \ee
+ where $\beta$ is a scalar and we have assumed that $h_{ij}$ is traceless, and 
+  \be
+  h_{ij}^{\perp} = \nabla_i h_j^{\perp}+\nabla_j h_i^{\perp} ~.
+ \ee
+ where $h_i^{\perp}$ is a divergenceless vector. The left two degrees of freedom in tensor mode $h_{ij}^{(S)}  $ correspond to the two polarization of gravitational wave.\\
+Fixing the gauge to Poisson gauge will remove two vector and two scalar degrees of freedom as we have the following constraints,
+\be
+\delta^{i j} B_{i, j}=\delta^{i j} h_{i j}=\delta^{j k} h_{i j, k}=0 ~. \label{eq:gauge}
+\ee
+}
+
+\section{Different codes}
+\mk{\tt [need to review this section and bring into agreement with section 2]}
+The Poisson equation which is solved to find the potentials according to the matter distribution is different in relativistic N-body codes, Newtonian N-body codes and linear Boltzmann codes. In the next three subsections we briefly discuss the difference between these codes.
+\subsection{$k$-evolution}
+In \kev the full Poisson equation Eq.~\eqref{eq:Poisson} including non-linear matter and non-linear $k$-essence densities, the relativistic terms and short wave corrections is solved to find the gravitational potential from the non-linear densities and potentials distribution. 
+\subsection{Newtonian N-body codes}
+ In Newtonian N-body codes \fh{RAMSES - Gadget ...} the Newtonian limit of full Poisson equation Eq.~\eqref{eq:Poisson} is solved to find the corresponding gravitational potential from the non-linear matter density distribution.
+ \be
+ \nabla^2 \Phi = 4\pi G_N a^2 \rho_m \delta_m
+ \ee
+ Where in the $\rho_m \delta_m$ the $k$-essence density is not included, due to the fact that in these codes we cannot include $k$-essence non-linearities in a well defined way (\fh{agree?}). Apart from $k$-essence density, the relativistic terms Eq.~\eqref{eq:re} and short wave corrections Eq.~\eqref{eq:sw} are also absent. 
+ \subsection{Linear Boltzmann codes}
+In the linear Boltzmann codes (e.g. \class) the linear Poisson equation including relativistic terms is solved to find the linear potential from the linear matter and potential distribution,
+ \be 
+\nabla^2 \Phi = 3 \mathcal{H} \Phi^{\prime} + 3 \mathcal{H}^{2}\Psi + 4 \pi G_N a^{2} \sum _i \bar{\rho}_i \delta_i^{(L)}  ~, \label{eq:Poisson_Class}
+\ee
+where $\delta_i^{(L)}$ includes the linear matter density and linear $k$-essence density $\delta_{\rm kess}^{(L)}$. In these codes the short wave corrections and non-linearities of matter and $k$-essence densities are not included.
+
+In the  Fig.~\ref{picture_Poissoneq} the sources of Poisson equation in different codes are illustrated. In the Newtonian N-body codes the relativistic terms, short wave corrections and non-linear evolution of $k$-essence density field are missed, while in the linear Boltzmann codes the non-linearities in all components and short wave corrections are absent.
+
+
+In the Section~\fh{...} we discuss how one has to modify Poisson equation in Newtonian N-body codes and Linear Boltzmann codes to consider $k$-essence scalar field. 
+% We also study the effect of each term in the full Poisson equation and make the conclusion of the error is introduced by neglecting each part as it is in the Newtonian N-body and Boltzmann codes.  
+\begin{figure}%
+    \centering
+    \hspace*{-1cm}  
+   {{\includegraphics[scale=0.25]{./Figs/Poisson_eq} }}%
+%    \qquad
+        \caption{\fhc{In the Newtonian N-body turn on R and say in the N-body motion gauge, and also try to put the background density.}
+        .The picture showing the difference between solved Poisson equation in different codes, in the left \kev as a relativistic N-body code the full Poisson equation including non-linear $k$-essence and matter densities, relativistic terms and short wave corrections are solved. In the middle the Poisson equation solved in the Newtonian N-body codes is illustrated, where the only source is non-linear matter density. In the right the situation for the linear Boltzmann codes e.g. \class is illustrated, where the linear matter and $k$-essence densities and relativistic terms are considered. }
+    \label{picture_Poissoneq}%
+\end{figure}
+
+
+{
+\section{OPTIONAL discussion about N-body gauge}
+\jar{This is not publishable text, it is just for discussion}
+The correspondence between Newtonian N-body simulations and GR is established through a family of gauges, called the Newtonian motion gauges, in which, generally speaking, you require
+\be
+    \nabla^2 \Phi_N = 4 \pi G_N \bar{\rho}_m \delta_m^\mathrm{count}\,,
+\ee
+and
+\be
+    \frac{dv^i}{d\tau} + \mathcal{H} v^i = -\nabla \Psi\,,
+\ee
+where in the first equation $\Phi_N$ is the contribution of nonrelativistic matter to $\Phi$, and $\delta_m^\mathrm{count}$ is a counting density (rest mass per coordinate volume). With two scalar gauge generators $L$ and $T$ at one's disposal, where $\tau \rightarrow \tau + T$ and $x^i \rightarrow x^i + \nabla^i L$ are the coordinate transformations, it turns out that under quite generic conditions there is a one-parameter family of gauge transformations that satisfy the above two conditions at the linear level. \fhc{Does the gauge transformation work for a relativistic fluid that clusters? ($k$-essence with large sound speed?) in this paper:arXiv:1101.3555v3 they say that this is a limitation to their approach. Is this method improved? Does it mean that even correct $\mu$ is not enough ... } 
+
+To illustrate this, let us start from the Poisson gauge and find $T$, $L$ such that above equations hold. The first thing to note is that $\Psi$ corresponds to a gauge invariant variable (we are working at linear order), so the second equation already holds in Poisson gauge. Since velocities transform as $v^i \rightarrow v^i + \nabla^i L'$ maintaining the form of the second equation already requires $L' \simeq 0$.
+
+Before turning to the first equation, let me define the metric perturbations of a generic Newtonian motion gauge as follows:
+\be
+    ds^2 = a^2 \left[-\left(1 + 2 A^\mathrm{Nm}\right) d\tau^2 -2 \nabla_i B^\mathrm{Nm} dx^i d\tau + \left(1 + 2 H_L^\mathrm{Nm}\right) \delta_{ij} dx^i dx^j - 2 \left(\nabla_i \nabla_j - \frac{\delta_{ij}}{3} \nabla^2\right)H_T^\mathrm{Nm} dx^i dx^j\right]
+\ee
+Noting how the various scalar perturbations transform, for a $T$ and $L$ connecting the Newtonian motion gauge to Poisson gauge we have
+\be
+    \Phi = -H_L^\mathrm{Nm} - \mathcal{H} T - \frac{1}{3} \nabla^2 L\,,
+\ee
+\be
+    \Psi = A^\mathrm{Nm} + \mathcal{H} T + T'\,,
+\ee
+\be
+    0 = B^\mathrm{Nm} + T - L' \Rightarrow B^\mathrm{Nm} \simeq  -T\,,
+\ee
+\be
+    0 = H_T^\mathrm{Nm} - L \Rightarrow H_T^\mathrm{Nm} = L\,,
+\ee
+and
+\be
+    \delta_X = \delta_X^\mathrm{Nm} - 3 \left(1 + w_X\right) \mathcal{H} T\,.
+\ee
+We can insert these expressions into the Hamiltonian constraint (keeping the term $\nabla^2\Phi$ in place) to obtain
+\be
+    \nabla^2 \Phi + 3 \mathcal{H} \left({H_L^\mathrm{Nm}}' + \mathcal{H} T' + \mathcal{H}' T\right)
+    - 3 \mathcal{H}^2 \left(A^\mathrm{Nm} + \mathcal{H}T + T'\right) = 4 \pi G_N a^2 \sum_X \bar{\rho}_X\left[\delta_X^\mathrm{Nm} - 3 \left(1 + w_X\right) \mathcal{H} T\right]\,,
+\ee
+where I already used the condition $L' \simeq 0$. Noting that
+\be
+\mathcal{H}^2 - \mathcal{H}' = 4 \pi G_N a^2 \sum_X \bar{\rho}_X \left(1+w_X\right)
+\ee
+we immediately get
+\be
+    \nabla^2 \Phi + 3 \mathcal{H} {H_L^\mathrm{Nm}}' - 3 \mathcal{H}^2 A^\mathrm{Nm} = 4 \pi G_N a^2 \sum_X \bar{\rho}_X \delta_X^\mathrm{Nm} = 4 \pi G_N a^2 \bar{\rho}_m \left(\delta_m^\mathrm{count} - 3 H_L^\mathrm{Nm}\right) + 4 \pi G_N a^2 \sum_{X\neq m} \bar{\rho}_X \delta_X^\mathrm{Nm}
+\ee
+The general Newtonian motion gauge condition is a complicated integral constraint that requires $T$, $L$ such that $L' \simeq 0$ and at the same time, the gauge terms on the left-hand side should cancel with the volume perturbation term on the right-hand side. Under some assumptions this constraint has a one-parameter family of solutions. One simple example is the so-called N-body gauge which has $H_L^\mathrm{Nb} \simeq 0$ which means that $\delta_m^\mathrm{Nb} = \delta_m^\mathrm{count}$. This means that not only are the Newtonian equations satisfied, but also the counting density \textit{is} the physical density in that gauge.
+
+One can easily see from the last equation that $H_L^\mathrm{Nb} \simeq 0$ also requires $A^\mathrm{Nb} \simeq 0$ if this is a Newtonian motion gauge (it is not immediately evident that such a solution to the gauge conditions exists, but it does). We can then infer $T$ and $L$ as follows.
+\be
+ \Psi = \mathcal{H} T + T'\,, \qquad \Phi = -\mathcal{H} T - \frac{1}{3} \nabla^2 L\,,
+\ee
+hence
+\be
+ \mathcal{H} \Psi + \Phi' = \left(\mathcal{H}^2 -\mathcal{H}'\right) T\,,
+\ee
+where $L' \simeq 0$ was assumed. We can now see that the momentum constraint implies $T = -\nabla^{-2} \theta_\mathrm{tot}$ and hence $\delta_m^\mathrm{Nb} = \Delta_m$. Inserting $T$ back into its relation with $\Phi$ above, we also get
+\be
+    \nabla^2 L = 3 \mathcal{H} \nabla^{-2} \theta_\mathrm{tot} - 3 \Phi\,.
+\ee
+The right-hand side is the comoving curvature perturbation which is indeed conserved at late times in standard cosmology. Hence our assumption $L' \simeq 0$ was consistent.
+
+Starting from the N-body gauge it is easy to see (considering how the Hamiltonian constraint transforms) that all other Newtonian motion gauges are reached by choosing a different temporal gauge $T$, with $L$ always fixed by the choice above (all Newtonian motion gauges therefore share the same non-vanishing $H_T^\mathrm{Nm}$). For instance, it can be convenient to make the same temporal gauge choice as in Poisson gauge, a choice which has been dubbed ``N-boisson gauge.'' In this case the physical density coincides with the one of the Poisson gauge, but it is \textit{not} equal to the counting density (the latter satisfies the Newtonian Poisson equation per gauge condition). This makes sense because the counting density itself only depends on $L$, so once it is fixed to fulfill the standard Poisson equation with a gauge-invariant left-hand side, $L$ is fixed.
+}
+
+ \section{Effective gravity in \kess} \label{section:mu}
+{The effect of $k$-essnece scalar field in general can be encoded into the modification to Poisson equation via effective Newton constant $\tilde{G}_\mathrm{eff}(k,a)$ or $\tilde{\mu}(k,a) = \tilde{G}_\mathrm{eff}(k,a)/G_\mathrm{N}$ function as following,}
+%  \begin{align}
+% k^4 \Phi = -4\pi G_N a^2\rho_m\tilde{\mu}(k,z)  \delta_m \label{eq.mu}
+% \end{align} 
+\be 
+\tilde{\mu}(k,z)^2 = \frac{k^4 \left\langle\Phi \Phi^\ast\right\rangle}{\left(4 \pi G_N a^2 \bar{\rho}_m\right)^2 \left\langle \delta_m \delta_m^\ast\right\rangle} \,,
+\ee
+{Where $\tilde{\mu}(k,a)$ here is different with the $\mu(k,z)$ defined in Equation~\ref{eq:mu_1} as here we have used $\delta_m$ instead of $\Delta_m$. In fact, in this definition we can study the effects coming from the relativistic terms (or divergence of velocity contribution) separately without mixing it density. Actually $\tilde{\mu}(k,a)$ does not seem a good definition as in the case of $\Lambda$CDM $\tilde{\mu} \neq 1$ anymore, but we will use this definition to compare different contributions including relativistic terms, moreover in this definition we are able to study the effect of $k$-essence non-linearities on relativistic terms too.}
+\mk{\tt [discuss at telecon today, relation to Section 2 discussion of $\mu$ now]}
+
+According to the full Poisson Eq.~\eqref{eq:Poisson} $\tilde{\mu}(k,a)$ reads, \fh{The following formula has to be checked by others!}
+\begin{align}
+\tilde{\mu}^{2}(k,z)  = & 1 
++\frac{ \bar{\rho}_{\rm kess}^2  \left \langle \delta_{\rm kess}  \delta^\ast_{\rm kess} \right \rangle} {\bar{\rho}_{m}^2 \left \langle  \delta_{m} \delta^{\ast}_{m}    \right \rangle } 
+%%%%%%%%%%%%%%%%%%%
++ \frac{ \bar{\rho}_{\rm kess}  \left \langle \delta_{\rm kess}  \delta^\ast_{\rm m} + \delta_{\rm m}  \delta^\ast_{\rm kess} \right \rangle} {\bar{\rho}_{m} \left \langle  \delta_{m} \delta^{\ast}_{m}    \right \rangle }  
+%%%%%%%%%%%%%%%
++  \frac{ \left \langle  \rm{R}  \rm{R}^\ast  \right \rangle  } { \left(4 \pi G_N a^2 \bar\rho_{m} \right)^2  \left \langle   \delta_{m}  \delta_{m}^\ast  \right \rangle }  
+%%%%%%%%%%%%%%%
++  \frac{ \left \langle  \rm{S}  \rm{S}^\ast  \right \rangle  } { \left(4 \pi G_N a^2 \bar\rho_{m} \right)^2  \left \langle   \delta_{m}  \delta_{m}^\ast  \right \rangle }  
+%%%%%%%%%%%%%%%
+\nonumber  \\ &
++\frac{ \left \langle  \rm{R}  {\delta^\ast_m} + {\delta_m}  \rm{R}^\ast     \right \rangle  } { \left(4 \pi G_N a^2 \bar\rho_{m} \right)  \left \langle   \delta_{m}  \delta_{m}^\ast  \right \rangle }  
+%%%%%%%%%%%%%%%
++\frac{ \bar \rho_{\rm kess}\left \langle  \rm{R}  {\delta^\ast_{\rm kess}} + {\delta_{\rm kess}}  \rm{R}^\ast     \right \rangle  } { \left(4 \pi G_N a^2 \bar\rho_{m} \right)^2\left \langle   \delta_{m}  \delta_{m}^\ast  \right \rangle }  
+\label{mu_formulae}
+\end{align}
+\fhc{By Cauchy Schwarz inequality we can put bounds on the $\mu$ neglecting the cross correlations! Or I also can make out put of cross correlations, if we really think $\Gamma$ is an interesting quantity, otherwise the main idea of the paper is not affected by different definitions of $\mu$....}
+{Where we have neglected the cross correlation between short wave corrections with other components as we will show that it is a good approximation. Moreover using the statistical homogeneity and isotropy we (which one?) we have $\left \langle  \rm{R}  {\delta^\ast_{\rm kess}} + {\delta_{\rm kess}}  \rm{R}^\ast     \right \rangle  = 2\left \langle  \rm{R}  {\delta^\ast_{\rm kess}}   \right \rangle $ for all the cross correlations.}
+and $\tilde{\mu}(k,z)^2$ is defined as following,
+{This definition we have assumed that the terms are fully correlated, which not necessarily true, so we have to add the cross correlation terms and subtract the fully correlated ones and measure the effect on $\mu$, we also have the cross corellation of matter and kess so the only thing is measuring the cross of potential and matter which could be done in small simulation and see what isit, actually we know that at large scales they are not fully correlated as the potenial or relativistic terms or velocities are made with different initial realization.   }
+\mk{\tt [I think the point is that the formula FH used (by mistake, as pointed out by Julian) was equivalent to assuming full correlation. It turns out that $\delta_k$ and $\delta_m$ {\bf are} nearly fully correlated except on small scales (explaining differences there). In addition velocities are not fully correlated, explaining differences on large scales.]}
+where we have used the full Poisson equation in Fourier space and have taken the relativistic terms $\tilde{\rm{R}}$ and short wave corrections $\tilde{\rm{S}}$ as new fields in our analysis. The  $\tilde{}$  refers to the fields in Fourier space. $\tilde{\rm{R}}(k,\tau)$ is the sum of the field over angles $(\theta_k,\phi_k)$ in a shell $(k,k+dk)$ in Fourier space at time $\tau$. \fh{To be checked!}. Moreover we have defined a new field $\tilde{ \mathcal{N}}( k,\tau) $ which represents the numerical noise in Fourier space at each wavenumber k and time $\tau$ , this numerical noise comes from the fact that the densities and potentials in N-body codes are prone to the numerical noises due to the discrete time integration, finite spatial resolutions and also approximations made in numerical solvers. In this work we are not going to give an analytical expression for $\tilde{ \mathcal{N}}( k,\tau)$ , instead we propose a way to have control over the numerical noises. \\
+From Eq.~\eqref{eq.mu} $\check{\mu}(k,a)$ also could be written as, 
+\be
+\check{\mu}^{(2)}(k,z) = \frac{ k^2 \tilde{\Phi}(k,a)}{4 \pi G_N \rho_m  \tilde \delta_{m} ( k ,\tau)} + {\tilde{ \mathcal{N'}}( k,\tau)} \label{eq:mu_second_form}
+\ee
+where we have defined $\tilde{ \mathcal{N'}}( k,\tau)$ which is the  numerical noise in the former equation. It's important to note that usually $\tilde{ \mathcal{N}}( k,\tau) \neq \tilde{ \mathcal{N'}}( k,\tau)$ since these noises are introduced from different expressions.  \mk{An interesting property of $\mu$ is that it is the ratio of two perturbation quantities, as can be seen from the equations above. This means that any common randomness in the two quantities (like the initial curvature perturbation from inflation) will almost cancel, which suppresses cosmic variance. This is not only useful for observational reasons, but it also allows the $N$-body simulations to predict the quantity on large scales without significant realisation noise.} In the next section when we discuss about the noises $\tilde{ \mathcal{N}}( k,\tau)$ and $\tilde{ \mathcal{N}'}( k,\tau)$ we show that the cosmic variance and also spatial resolution effect around Nyqvist frequency cancels significantly in the first expression $\check{\mu}^{(1)}(k,z)$ which meaning that $\tilde{ \mathcal{N}}( k,\tau)$ is more suppressed than $\tilde{ \mathcal{N}'}( k,\tau)$ at small and large
+scales. We will use this property to introduce a new estimator in th enext section.
+
+In the \lcdm\ case and Newtonian limit where $\rho_{\rm kess}$, $\delta_{\rm kess}$, relativistic terms and short wave corrections vanish, we have $\mu(k,a)=1$, while for any non zero $\delta_{\rm kess}$, $\rm{R}(\vec k,\tau)$ and $\rm{S}(\vec k, \tau)$ we see deviation of $\mu(k,a)$ from 1. \fh{Maybe we can say that in the \lcdm ~ limit of linear Boltzmann code we have $\rm{R}(\vec k,\tau)$, so in that sense these relativistic terms are included there!}
+% We use the behaviour of $\mu$ obtained from the $k$-evolution code to first, probing the non-linearity of $k$-essence scalar field, second, \fh{proposing a model independent fitting function which works very well for the  non-linear $k$-essence and it is expected to work for most of the MG/DE models according to the general properties that these models share }.
+% \bnj{We aim to study the effects of non-linearities on the effective gravity in \kess\ via the study of $\mu$}
+
+In the next section, we study the effect of the non-linearity, relativistic and short wave corrections on the effective gravity parametrization via the \kev\ code, and compare it to linear results from \code{CLASS} and also Newtonian N-body codes prediction \fh{It has to be written in a better way, any idea?}. 
+\mk{In general we need two quantities to fully parametrize the dark sector perturbations, by adding e.g.\ $\eta = \Phi/\Psi$ \cite{Kunz:2012aw}. But as \kess\ has a vanishing anisotropic stress \fh{at linear order, (which is the case here?)}, we have that at late times \fh{Not clear}, when the contribution from radiation is negligible, $\Phi=\Psi$, so that $\eta=1$\footnote{For the same reason we can use here $\mu$ in the Poisson equation for $\Phi$, even though this symbol is usually used to parametrize a deviation in $\Psi$, while sometimes $Q$ is used for $\Phi$ and $\Sigma$ for the Weyl potential $\Phi+\Psi$ \cite{Amendola:2007rr}. In general only two of these quantities are independent, and for \kess\ only one of them, with $Q=\mu=\Sigma$.}. We show $\eta$ from the simulations in Fig.\ \ref{eta}, which shows that even taking non-linear contributions into account  \cite{Ballesteros:2011cm}, this quantity remains very small and can be safely neglected.} 
+
+\mk{\tt [maybe material in sections 2 -5 should become a single section? needs to streamlined]}
+
+
+
+\subsection{Numerical noise }
+\mk{\tt [could have summary here and have more detailed discussion in appendix? It's a useful tool but not the main point of the paper?]}
+In this subsection we are going to discuss about the numerical imprecision introduced at different levels on the results and how one could have an estimation of these error. The numerical errors in N-body simulations come from different sources, the main sources include error due to numerical methods/algorithm with finite time resolution, errors of approximations e.g. $\Phi'(\tau_n) = \frac{\Phi(\tau_{n+1}) -\Phi(\tau_n)}{d\tau} + \mathcal{O}(d\tau^2)$ and the errors introduced due to the finite resolution. Taking control over the errors is a chanllenge nowadays, since the physical effects could be mixed with the numerical errors and one would infer a wrong physics out of the data from the N-body simulations. Here we propose a new way to estimate the numerical error in the N-body simulations via a consistency check, especially this estimator would tell us if the numerical precision is enough to have the right dynamics. We propose $  \Gamma (k,z) \equiv  \tilde{\mu}_{(1)}- \tilde{\mu}_{(2)} $ to be an estimator of the noise in the system. We are going to study some features of this estimator in the following and explain why this is a motivated estimator for our purposes. First, it is important to see that at the level of theory in which there is no numerical noises i.e. $ \tilde{ \mathcal{N'}}( k,\tau)= \tilde{ \mathcal{N}}( k,\tau)= 0$,  $\Gamma =0$ by definition. While in the realistic case $\Gamma$ is the difference between noises introduce based on two different definitions of $\mu$, 
+\be 
+\Gamma =   \tilde{\mu}_{(1)}- \tilde{\mu}_{(2)} =  \tilde{ \mathcal{N}}( k,\tau)-{\tilde{ \mathcal{N'}}( k,\tau)}
+\ee
+Moreover, by definition, $\Gamma$, $ \tilde{ \mathcal{N}}( k,\tau)$ and $ \tilde{ \mathcal{N'}}( k,\tau)$ are dimensionless, redshift and wavenumer dependent. Large $\Gamma$ at any redshift and wavenumber means that the scheme is failed due to numerical imprecision. 
+It's important to note that although $\Gamma$ is a good indicator for the numerical noise in the system, but having $\Gamma=0$ does not necessarily mean that there is no noise, as $\Gamma$ is the difference between two noises and at some cases these noises could be almost the same and $\Gamma$ vanishes.
+
+To show the capability of $\Gamma$ we make  three experiments, in which we perform two simulations with two different precision parameters to see the effect on $\Gamma$, \\
+\fh{Added in the noise:\\
+In one mu we have both strong spatial resolution and cosmic variance effect while in the other is much suppressed! Do we know why $\Phi/\delta_m$ has cosmic variance and also Nyqvist effect, does it come from the fact that they are evolved independently or ...?}\\
+The $\Gamma$ parameter is a good indicator as a consistency check to see that if the dynamics is badly treated at any k and redshift, in the Figure~\ref{mu1_mu2} we have shown that the two definitions of $\mu$ have different time and spatial errors, which motivates us to define $\Gamma$. In the Figure~\ref{resolution_gamma} we have plotted $\Gamma$ as function of wave number at different redshifts for two different cases, on the left the time precision is fixed and we show $\Gamma$ for two different spatial resolution and on the right the spatial resolution is fixed and we change the time precision it's interesting to see that according to these figures we can decide what regions are no trustable as we get wrong dynamics due to the large numerical noise in N-body simulations either because of low time/spatial resolution or cosmic variance. \\
+In order to choose the scales which we can trust in the N-body simulations results or when we want to decide if the methods are working and time/spatial precision is enough, we usually compare the results with linear theory and decide which parts are affected by numerical imprecision in the N-body code and cut them. $\Gamma$ is an estimator which made only using the simulation data alone and would tell us at what scale we cannot trust data at all, this quantity would also be useful to check the the consistency in the Boltzmann codes due to the time integrator imprecision. The important point about $\Gamma$ is that we have shown that this quantity is sensitive to imprecision and would react when the dynamics is failed.\\
+\fh{The only missed reasoning here is that we don't know why in $\mu_1$ the resolution and cosmic variance effect goes away while in the other definition does not!!!}
+\begin{figure}%
+    \centering
+    \subfloat[  ] {{\includegraphics[scale=0.36]{./Figs/mu_1_mu_2_low.pdf} }}%
+    \qquad
+    \subfloat[  ]{{\includegraphics[scale=0.36]{./Figs/mu_1_mu_2_high.pdf} }}%
+    \caption{\fh{The same fig for $c_s^2=10^{-4}$}. $\mu(k,z)$ for the same spatial resolution and two different time precision is plotted. According to the figures $\hat{\mu}_2$ definition is more prone to the cosmic variance and spatial resolution compared to the $\hat{\mu}_1$. This feature in $\hat{\mu}_1$ and $\hat{\mu}_2$ leads us to define $\Gamma$ as a good indicator of numerical imprecision in the N-body codes }%
+    \label{mu1_mu2}%
+\end{figure}
+\begin{figure}%
+    \centering
+    \subfloat[ ] {{\includegraphics[scale=0.36]{./Figs/gamma_resolution_study.pdf} }}%
+    \qquad
+    \subfloat[ ] {{\includegraphics[scale=0.36]{./Figs/gamma_time_resolution.pdf} }}%
+    \caption{\fh{Make this for CLASS and lower sound speed and show that time integrator fails in CLASS }$\Gamma(k,z)$ in terms of wave number for three different redshifts is shown. On the left the time precision is fixed and we have changed the spatial resolution, the wave numbers which $\Gamma$ is large means that the dynamics is failed there and we cannot trust data there. On the right $\Gamma$ for two simulations with the same spatial resolution and different time precision is shown, the figure shows that the time resolution in the case $d\tau = 0.04/\mathcal{H}$ is not enough at low redshifts and we get very large $\Gamma$ which reaches to $10\%$ meaning that the numerical noise at those wave number at least is $10\%$.  }
+    \label{resolution_gamma}%
+\end{figure}
+
+\begin{figure}%
+    \centering
+    \subfloat[  ] {{\includegraphics[scale=0.36]{./Figs/mu_1_mu_2_low_e4.pdf} }}%
+    \qquad
+    \subfloat[  ]{{\includegraphics[scale=0.36]{./Figs/mu_1_mu_2_high_cs_e4.pdf} }}%
+    \caption{ }%
+    \label{mu1_mu2}%
+\end{figure}
+\begin{figure}%
+    \centering
+    \subfloat[ ] {{\includegraphics[scale=0.36]{./Figs/gamma_resolution_study_cs_e4.pdf} }}%
+    \qquad
+    \subfloat[ ] {{\includegraphics[scale=0.36]{./Figs/gamma_time_resolution_cs2_e4.pdf} }}%
+    \caption{ }
+    \label{resolution_gamma}%
+\end{figure}
+
+
+%
+% \bibliographystyle{unsrt}  
+\bibliographystyle{JHEP}
+\bibliography{Ref}
+
+
+
+
+% \bibliographystyle{ieeetr}
+\end{document}
+% \begin{thebibliography}{999}
+% \newcommand{\bb}{\bibitem}
+%  \end{thebibliography}
+\end{document}

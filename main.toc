@@ -1,0 +1,18 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Note!}{1}{section.1}
+\contentsline {section}{\numberline {2}Introduction}{1}{section.2}
+\contentsline {section}{\numberline {3}$k$-essence model}{2}{section.3}
+\contentsline {section}{\numberline {4}{$k$-evolution }code}{5}{section.4}
+\contentsline {section}{\numberline {5}Results}{6}{section.5}
+\contentsline {subsection}{\numberline {5.1}Relativistic and short-wave corrections}{6}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Linear versus non-linear $\mu $}{6}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}A fitting function for $\mu $ in \ensuremath {k}-essence}{8}{subsection.5.3}
+\contentsline {section}{\numberline {6}Conclusions}{10}{section.6}
+\contentsline {section}{\numberline {A}The degrees of freedom}{11}{appendix.A}
+\contentsline {section}{\numberline {B}Different codes}{12}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}$k$-evolution}{12}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Newtonian N-body codes}{12}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}Linear Boltzmann codes}{12}{subsection.B.3}
+\contentsline {section}{\numberline {C}OPTIONAL discussion about N-body gauge}{12}{appendix.C}
+\contentsline {section}{\numberline {D}Effective gravity in \ensuremath {k}-essence}{14}{appendix.D}
+\contentsline {subsection}{\numberline {D.1}Numerical noise }{15}{subsection.D.1}
